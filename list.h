@@ -6,38 +6,40 @@
 
 
 
-int list_index (Node);
-int list_count (void);
-bool list_append (Node);
-bool list_extend (DS);
-bool list_empty (void);
-bool list_insert (Node);
-bool list_remove (Node);
-void list_sort (void);    //cmp function
-void list_reverse (void);
-Node list_pop (void);
+int list_index ();
+int list_count ();
+int list_append ();
+int list_extend ();
+int list_empty ();
+int list_insert ();
+int list_remove ();
+void list_sort ();
+void list_reverse ();
+Node list_pop ();
 
 
-
-DS* List() {
+DS *List() {
+    DS * structure;
     structure = (DS *) malloc( sizeof(DS) );
-	structure -> head = structure -> tail = NULL;
-	structure -> length = 0;
-	
-    structure.index = list_index;
-    structure.count = list_count;
-    structure.append = list_append;
-    structure.extend = list_extend;
-    structure.empty = list_empty;
-    structure.insert = list_insert;
-    structure.remove = list_remove;
-    structure.sort = list_sort;
-    structure.reverse = list_reverse;
-    structure.pop = list_pop;
-	
-	return structure;
+    structure->head = structure->tail = 0;
+    structure->length = 0;
+    return structure;
 }
 
+
+int list_insert(DS *list, Node *node) {
+    if (! list->head) list->head = list->tail = node;
+    list->length++;
+    return 1;
+}
+
+
+int list_extend(DS *first_list, DS *second_list) {
+    first_list->tail->next = second_list->head;
+    first_list->tail = second_list->tail;
+    second_list->head = second_list->tail = 0;
+    return 1;
+}
 
 
 #endif

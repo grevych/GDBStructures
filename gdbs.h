@@ -1,43 +1,42 @@
+#include <stdlib.h>
+
 #ifndef DS_H_
 #define DS_H_
 
 
+typedef struct node { 
+    void *elem;
+    struct node *next;
+    struct node *prev;
+ 
+} Node;
 
-typedef struct {  
+
+typedef struct ds {  
     int length;
-    struct Node *head;
-	struct Node *tail;
-	int (*index) (Node) = NULL;
-	int (*count) (void) = NULL;
-	bool (*append) (Node) = NULL;
-	bool (*extend) (DS) = NULL;
-	bool (*empty) (void) = NULL;
-	bool (*insert) (Node) = NULL;
-	bool (*remove) (Node) = NULL;
-	void (*sort) (void) = NULL;    //cmp function
-	void (*reverse) (void) = NULL;
-	Node (*pop) (void) = NULL;
-    Node (*push) = NULL;
+    Node *head;
+    Node *tail;
+    // int (*index)();
+    // int (*count)();
+    // int (*append)();
+    // int (*extend)();
+    // int (*empty)();
+    // int (*insert)();
+    // int (*remove)();
+    // int (*sort)();    //cmp function
+    // void (*reverse) ();
+    // Node (*pop) ();
+    // Node (*push) ();
 
 } DS;
 
 
 
-typedef struct { 
-    void *elem;
-    struct Node *next;
-    struct Node *prev;
- 
-} Node;
-
-
-
-Node * Node(void *e) {
-    node = (Node *) malloc( sizeof(Node) );
-    node -> next = NULL;
-    node -> prev = NULL;
-    node -> elem = e;
-    
+Node * ND(void *e) {
+    Node * node = (Node *) malloc( sizeof(Node) );
+    node->next = NULL;
+    node->prev = NULL;
+    node->elem = e;
     return node;
 }
 

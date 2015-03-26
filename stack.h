@@ -6,30 +6,49 @@
 
 
 
-int stack_index (Node);
-int stack_count (void);
-bool stack_extend (DS);
-bool stack_empty (void);
-bool stack_push (Node);
-Node stack_pop (void);
-
+int stack_empty ();
+int stack_length ();
+Node *stack_pop ();
+int stack_push ();
 
 
 DS* Stack() {
+    DS * structure;
     structure = (DS *) malloc( sizeof(DS) );
-    structure -> head = structure -> tail = NULL;
-	structure -> length = 0;
-	
-	structure.index = stack_index;
-    structure.count = stack_count;
-    structure.extend = stack_extend;
-    structure.empty = stack_empty;
-    structure.push = stack_push;
-    structure.pop = stack_pop;
-    
-	return structure;
+    structure->head = structure->tail = 0;
+    structure->length = 0;
+    return structure;
 }
 
+
+int stack_empty(DS *stack) {
+    if (! stack->head) return 1;
+}
+
+
+int stack_length(DS *stack) {
+    return stack->length;
+}
+
+
+Node * stack_pop(DS *stack) {
+    if (stack_empty(stack)) return 0;
+
+    Node * aux;
+    aux = stack->head;
+    stack->head = stack->head->next;
+    aux->next = 0;
+    stack->length--;
+    return aux;
+}
+
+
+int stack_push(DS *stack, Node *node) {
+    node->next = stack->head;
+    stack->head = node;
+    stack->length++;
+    return 1;
+}
 
 
 #endif

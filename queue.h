@@ -18,8 +18,8 @@ bool queue_remove (Node);
 DS* Queue() {
     structure = (DS *) malloc( sizeof(DS) );
     structure -> head = structure -> tail = NULL;
-	structure -> length = 0;
-	
+    structure -> length = 0;
+    
     return structure;
 }
 
